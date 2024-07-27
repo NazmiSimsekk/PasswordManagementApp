@@ -19,9 +19,8 @@ android {
     }
 
     buildFeatures {
-        //noinspection DataBindingWithoutKapt
+
         dataBinding = true
-        viewBinding = true
     }
 
     buildTypes {
@@ -61,5 +60,7 @@ dependencies {
 
     //fragment
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
+
+
 
 }

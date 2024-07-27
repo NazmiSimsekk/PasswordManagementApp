@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:gravity="center"
-        tools:context=".view.LoginFragment">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".view.LoginFragment">
 
         <TextView
             android:layout_width="wrap_content"
@@ -16,40 +15,52 @@
             android:text="Kullanıcı Girişi"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="24dp"
+            tools:ignore="HardcodedText" />
 
-        <EditText
-            android:id="@+id/usernameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:hint="Kullanıcı Adı"
-            android:inputType="text"
-            android:minHeight="48dp" />
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="username"
+        android:hint="Kullanıcı Adı"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:hint="Şifre"
+            android:autofillHints="password"
             android:inputType="textPassword"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textColorHint="546E7A"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Giriş Yap"
-            android:layout_marginBottom="16dp"/>
+            android:maxWidth="320dp"
+            android:layout_marginBottom="16dp"
+            tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/registerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:minHeight="48dp"
-            android:text="Kayıt Ol"
-            android:textColor="@android:color/holo_blue_dark" />
+    <TextView
+        android:id="@+id/registerTextView"
+        android:layout_width="wrap_content"
+        android:textSize="32sp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:minHeight="48dp"
+        android:text="Kayıt Ol"
+        android:textColor="#0277BD"
+        tools:ignore="HardcodedText" />
     </LinearLayout>
