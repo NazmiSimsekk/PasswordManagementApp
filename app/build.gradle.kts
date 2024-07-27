@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -41,8 +42,6 @@ android {
     }
 }
 
-val nav_version = "2.7.7"
-val fragment_version = "1.8.1"
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -55,11 +54,11 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     //navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     //fragment
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
+    implementation(libs.androidx.fragment.ktx)
 
 
 
