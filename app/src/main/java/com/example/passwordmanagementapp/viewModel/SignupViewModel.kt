@@ -9,11 +9,13 @@ class SignupViewModel: ViewModel() {
     private var password = MutableLiveData<String>()
     private var tryPassword = MutableLiveData<String>()
 
-    var olusturulanKullanici = MutableLiveData<String>()
+    private var olusturulanKullanici = MutableLiveData<String>()
 
     init {
         olusturulanKullanici.value = userName.value.toString()
 
+        password.value = ""
+        tryPassword.value = ""
         println("Kullanıcı Adı: $olusturulanKullanici")
     }
 }
