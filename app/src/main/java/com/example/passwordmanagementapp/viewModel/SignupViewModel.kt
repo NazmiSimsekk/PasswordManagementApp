@@ -1,21 +1,18 @@
 package com.example.passwordmanagementapp.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+
 class SignupViewModel: ViewModel() {
 
-    var userName = MutableLiveData<String>()
-    private var password = MutableLiveData<String>()
-    private var tryPassword = MutableLiveData<String>()
+    private val _userName = MutableLiveData<String>()
+    val userName: LiveData<String> get() = _userName
 
-    private var olusturulanKullanici = MutableLiveData<String>()
+    fun signUpViewClick(getUsername: String) {
 
-    init {
-        olusturulanKullanici.value = userName.value.toString()
-
-        password.value = ""
-        tryPassword.value = ""
-        println("Kullanıcı Adı: $olusturulanKullanici")
+        _userName.value = getUsername
+        println(getUsername)
     }
 }

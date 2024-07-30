@@ -19,14 +19,14 @@
         android:gravity="center"
         tools:context=".view.LoginFragment">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kullanıcı Girişi"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="24dp"
-                tools:ignore="HardcodedText" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kullanıcı Girişi"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"
+            tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/usernameEditText"
@@ -59,20 +59,67 @@
                 android:text="Giriş Yap"
                 android:maxWidth="320dp"
                 android:layout_marginBottom="16dp"
+                android:layout_marginTop="25dp"
                 tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/registerTextView"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:minHeight="48dp"
-            android:text="Kayıt Ol"
-            android:textColor="#0277BD"
-            android:textSize="32sp"
-            tools:ignore="HardcodedText"
-            android:onClick="@{clickListener::signUpClick}"/>
-    </LinearLayout>
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/registerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:onClick="@{clickListener::signUpClick}"
+                android:text="Kayıt Ol"
+                android:textColor="#0277BD"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:text="Şifremi Unuttum"
+                android:textColor="#0277BD"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/loginHashingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hashing"
+                tools:ignore="HardcodedText"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/loginGenerateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:text="Generate"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        </LinearLayout>
+
 </layout>

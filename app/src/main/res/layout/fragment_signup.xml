@@ -6,6 +6,10 @@
         <variable
             name="signUpVar"
             type="com.example.passwordmanagementapp.viewModel.SignupViewModel" />
+
+        <variable
+            name="signUpClick"
+            type="com.example.passwordmanagementapp.util.SignupClick" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +38,7 @@
             android:layout_marginBottom="16dp"
             android:autofillHints="no"
             android:hint="Kullanıcı Adı"
-            android:text="@={signUpVar.userName}"
+            android:text="@{signUpVar.userName}"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
@@ -71,7 +75,34 @@
             android:layout_height="wrap_content"
             android:text="Kayıt Ol"
             android:textAllCaps="false"
-            tools:ignore="HardcodedText,DuplicateSpeakableTextCheck" />
+            tools:ignore="HardcodedText,DuplicateSpeakableTextCheck"
+            android:onClick="@{signUpClick::signUpClick}"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:text="Generate"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText"
+                android:textColor="#0277BD"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:text="Hashing"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText"
+                android:textColor="#0277BD"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </layout>
