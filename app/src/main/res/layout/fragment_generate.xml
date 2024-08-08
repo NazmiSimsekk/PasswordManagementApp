@@ -2,10 +2,69 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <FrameLayout
+
+    <RelativeLayout
+        android:id="@+id/generateRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.GenerateFragment">
+        tools:context=".view.GenerateFragment"
+        tools:ignore="HardcodedText">
 
-    </FrameLayout>
+        <LinearLayout
+            android:id="@+id/generateLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp">
+
+            <CheckBox
+                android:id="@+id/lowerCaseCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lowercase"
+                android:textSize="24sp" />
+
+            <CheckBox
+                android:id="@+id/upperCaseCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Uppercase"
+                android:textSize="24sp" />
+
+            <CheckBox
+                android:id="@+id/numbersCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Numbers"
+                android:textSize="24sp" />
+
+            <CheckBox
+                android:id="@+id/specialCharactersCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Special Characters"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/generateLengthEditText"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Length"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textColorHint="#78909C"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/generateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Generate"
+            android:layout_below="@+id/generateLinearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
+    </RelativeLayout>
 </layout>

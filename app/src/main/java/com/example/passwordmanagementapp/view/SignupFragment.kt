@@ -16,7 +16,10 @@ class SignupFragment : Fragment(), SignupClick {
 
     private lateinit var dataBinding: FragmentSignupBinding
     private var viewModel = SignupViewModel()
-    private var nazmi: String? = null
+
+    private var email = ""
+    private var passWord = ""
+    private var tryPassword = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,25 +30,55 @@ class SignupFragment : Fragment(), SignupClick {
         savedInstanceState: Bundle?
     ): View {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false)
-        viewModel = ViewModelProvider(this)[SignupViewModel::class.java]
         return  dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dataBinding.signUpClick = this
+        viewModel = ViewModelProvider(this@SignupFragment)[SignupViewModel::class.java]
+        dataBinding.signUpClick = this@SignupFragment
         dataBinding.signUpVar = viewModel
+        dataBinding.lifecycleOwner = this@SignupFragment
 
-        viewModel.userName.observe(viewLifecycleOwner){
-            dataBinding.userNameEditText.setText(it)
+        viewModel.email.observe(viewLifecycleOwner){
+            it?.let {
+                dataBinding.signupUserNameEditText.setText(it)
+            }
         }
 
+        viewModel.password.observe(viewLifecycleOwner){
+            it?.let {
+                dataBinding.signupPassEditText.setText(it)
+            }
+        }
+
+        viewModel.tryPassword.observe(viewLifecycleOwner){
+            it?.let {
+                dataBinding.signupTryPassEditText.setText(it)
+            }
+        }
     }
 
     override fun signUpClick(v: View) {
-        nazmi = dataBinding.userNameEditText.text.toString()
-        viewModel.signUpViewClick(nazmi!!)
+        email = dataBinding.signupUserNameEditText.text.toString()
+        passWord = dataBinding.signupPassEditText.text.toString()
+        tryPassword = dataBinding.signupTryPassEditText.text.toString()
+        viewModel.signUp(email,passWord,tryPassword,requireContext(),v)
+    }
 
+    override fun onResume() {
+        super.onResume()
+        println("Fragment Resume")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        println("Fragment View Dead")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        println("Fragment Dead")
     }
 }

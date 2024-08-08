@@ -6,15 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.lifecycle.ViewModelProvider
 import com.example.passwordmanagementapp.R
 import com.example.passwordmanagementapp.databinding.FragmentLoginBinding
 import com.example.passwordmanagementapp.util.SignupClick
+import com.example.passwordmanagementapp.viewModel.LoginViewModel
 
 
-class LoginFragment : Fragment(), SignupClick {
+class LoginFragment : Fragment(), SignupClick{
 
     private lateinit var dataBinding: FragmentLoginBinding
+    private lateinit var viewModel: LoginViewModel
+
+    private var loginEmail: String = ""
+    private var loginPassword: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,10 +33,13 @@ class LoginFragment : Fragment(), SignupClick {
         super.onViewCreated(view, savedInstanceState)
 
         dataBinding.clickListener = this
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        dataBinding.loginVar = viewModel
     }
 
     override fun signUpClick(v: View) {
-        val action = LoginFragmentDirections.actionLoginFragmentToSignupFragment()
-        Navigation.findNavController(v).navigate(action)
+        TODO("Not yet implemented")
     }
+
+
 }

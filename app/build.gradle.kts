@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -20,7 +21,7 @@ android {
     }
 
     buildFeatures {
-
+        viewBinding = true
         dataBinding = true
     }
 
@@ -41,7 +42,7 @@ android {
         jvmTarget = "1.8"
     }
 }
-
+val room_version = "2.6.1"
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -59,8 +60,18 @@ dependencies {
 
     //fragment
     implementation(libs.androidx.fragment.ktx)
-
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.lifecycle.livedata.ktx)
+
+    //firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+    implementation("com.google.firebase:firebase-firestore:25.0.0")
+    implementation("com.google.firebase:firebase-auth:23.0.0")
+
+    //room
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
 }

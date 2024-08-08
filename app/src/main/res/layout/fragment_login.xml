@@ -12,6 +12,7 @@
             type="com.example.passwordmanagementapp.util.SignupClick" />
     </data>
     <LinearLayout
+        android:id="@+id/loginLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -20,6 +21,7 @@
         tools:context=".view.LoginFragment">
 
         <TextView
+            android:id="@+id/textLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kullanıcı Girişi"
@@ -29,46 +31,50 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/usernameEditText"
+            android:id="@+id/loginUsernameEditText"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:autofillHints="username"
-            android:hint="Kullanıcı Adı"
+            android:hint="Email"
+            android:text="@{loginVar.loginEmail}"
             android:inputType="text"
             android:minHeight="48dp"
             android:textColorHint="@color/black"
             tools:ignore="HardcodedText" />
 
-            <EditText
-                android:id="@+id/passwordEditText"
-                android:layout_width="380dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="Şifre"
-                android:autofillHints="password"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:textColorHint="#546E7A"
-                tools:ignore="HardcodedText" />
+        <EditText
+            android:id="@+id/loginPasswordEditText"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Şifre"
+            android:text="@{loginVar.loginPassword}"
+            android:autofillHints="password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:textColorHint="#546E7A"
+            tools:ignore="HardcodedText" />
 
-            <Button
-                android:id="@+id/loginButton"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="Giriş Yap"
-                android:maxWidth="320dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="25dp"
-                tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Giriş Yap"
+            android:maxWidth="320dp"
+            android:onClick="@{clickListener::signUpClick}"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="25dp"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
+            android:id="@+id/loginCenterLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
 
             <Button
-                android:id="@+id/registerTextView"
+                android:id="@+id/loginRegisterTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/buttonBarButtonStyle"
@@ -83,6 +89,7 @@
                 tools:ignore="HardcodedText"/>
 
             <Button
+                android:id="@+id/loginForgotPasswordTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/buttonBarButtonStyle"
@@ -96,6 +103,7 @@
 
 
         <LinearLayout
+            android:id="@+id/loginBottomLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

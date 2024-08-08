@@ -1,14 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.DetailFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:id="@+id/detailLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".view.DetailFragment"
+        android:orientation="vertical"
+        tools:ignore="HardcodedText">
 
-</FrameLayout>
+        <EditText
+            android:id="@+id/platformNameDetailText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:hint="Platform Name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColorHint="#78909C"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/userNameDetailText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:hint="User Name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColorHint="#78909C"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/passwordDetailText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:hint="Password"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textColorHint="#78909C"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/detailButtonLayout"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/saveDetailButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:textSize="24sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+
+            <Button
+                android:id="@+id/deleteDetailButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textSize="24sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+
+            <Button
+                android:id="@+id/copyDetailButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Copy"
+                android:textSize="24sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

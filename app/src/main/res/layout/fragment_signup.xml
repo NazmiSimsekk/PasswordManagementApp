@@ -12,6 +12,7 @@
             type="com.example.passwordmanagementapp.util.SignupClick" />
     </data>
     <LinearLayout
+        android:id="@+id/signUpLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -32,13 +33,13 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/userNameEditText"
+            android:id="@+id/signupUserNameEditText"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:autofillHints="no"
             android:hint="Kullanıcı Adı"
-            android:text="@{signUpVar.userName}"
+            android:text="@{signUpVar.email}"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
@@ -46,10 +47,11 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/et_password"
+            android:id="@+id/signupPassEditText"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:hint="Şifre"
+            android:text="@{signUpVar.password}"
             android:inputType="textPassword"
             android:layout_marginBottom="16dp"
             android:textColorHint="@color/black"
@@ -58,11 +60,12 @@
             android:importantForAutofill="no"/>
 
         <EditText
-            android:id="@+id/tryPassword"
+            android:id="@+id/signupTryPassEditText"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:hint="Şifreyi Tekrar Giriniz"
+            android:text="@{signUpVar.tryPassword}"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:minHeight="48dp"
@@ -70,7 +73,7 @@
             tools:ignore="HardcodedText" />
 
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/signupRegisterButton"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Kayıt Ol"
@@ -80,11 +83,13 @@
 
 
         <LinearLayout
+            android:id="@+id/signUpBottomLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
 
             <Button
+                android:id="@+id/signUpGenerateButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/buttonBarButtonStyle"
@@ -94,6 +99,7 @@
                 android:textColor="#0277BD"/>
 
             <Button
+                android:id="@+id/sigUpHashingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/buttonBarButtonStyle"
