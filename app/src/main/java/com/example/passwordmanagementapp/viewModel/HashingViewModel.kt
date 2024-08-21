@@ -1,4 +1,10 @@
 package com.example.passwordmanagementapp.viewModel
 
-class HashingViewModel {
+import androidx.lifecycle.ViewModel
+
+class HashingViewModel: ViewModel() {
+
+    fun hashing() {
+        TODO("Not yet implemented")
+    }
 }

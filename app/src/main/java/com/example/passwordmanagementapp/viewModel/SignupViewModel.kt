@@ -33,6 +33,7 @@ class SignupViewModel: ViewModel() {
             viewModelScope.launch(Dispatchers.IO) {
                 try {
                     auth.createUserWithEmailAndPassword(email,password).await()
+                    auth.signOut()
                     withContext(Dispatchers.Main){
                         val action = SignupFragmentDirections.actionSignupFragmentToLoginFragment()
                         Navigation.findNavController(view).navigate(action)
@@ -42,7 +43,6 @@ class SignupViewModel: ViewModel() {
                         Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
                     }
                 }
-
             }
         }
     }

@@ -9,7 +9,7 @@
             type="com.example.passwordmanagementapp.viewModel.LoginViewModel" />
         <variable
             name="clickListener"
-            type="com.example.passwordmanagementapp.util.SignupClick" />
+            type="com.example.passwordmanagementapp.util.LoginClickListener" />
     </data>
     <LinearLayout
         android:id="@+id/loginLinearLayout"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:text="Giriş Yap"
             android:maxWidth="320dp"
-            android:onClick="@{clickListener::signUpClick}"
+            android:onClick="@{clickListener::loginClick}"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="25dp"
             tools:ignore="HardcodedText" />
@@ -82,7 +82,7 @@
                 android:focusable="true"
                 android:gravity="center"
                 android:minHeight="48dp"
-                android:onClick="@{clickListener::signUpClick}"
+                android:onClick="@{clickListener.registerClick}"
                 android:text="Kayıt Ol"
                 android:textColor="#0277BD"
                 android:textSize="20sp"

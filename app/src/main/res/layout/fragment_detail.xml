@@ -2,6 +2,16 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="detail"
+            type="com.example.passwordmanagementapp.viewModel.DetailViewModel" />
+
+        <variable
+            name="clickListener"
+            type="com.example.passwordmanagementapp.util.DetailClickListener" />
+    </data>
     <LinearLayout
         android:id="@+id/detailLinearLayout"
         android:layout_width="match_parent"
@@ -17,10 +27,25 @@
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:hint="Platform Name"
+            android:text="@={detail.detailPlatformName}"
             android:importantForAutofill="no"
             android:inputType="text"
             android:textColorHint="#78909C"
             android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/detailEmailEditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:hint="Email"
+            android:text="@={detail.detailEmail}"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColorHint="#78909C"
+            android:textSize="24sp"
+            tools:ignore="TextFields" />
 
         <EditText
             android:id="@+id/userNameDetailText"
@@ -29,6 +54,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:hint="User Name"
+            android:text="@={detail.detailUserName}"
             android:importantForAutofill="no"
             android:inputType="text"
             android:textColorHint="#78909C"
@@ -41,6 +67,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:hint="Password"
+            android:text="@={detail.detailPassword}"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:textColorHint="#78909C"
@@ -61,6 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Save"
+                android:onClick="@{clickListener.detailSaveClickListener}"
                 android:textSize="24sp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp" />
@@ -71,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delete"
+                android:onClick="@{clickListener.detailDeleteClickListener}"
                 android:textSize="24sp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp" />
@@ -81,6 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Copy"
+                android:onClick="@{clickListener.detailCopyClickListener}"
                 android:textSize="24sp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"/>

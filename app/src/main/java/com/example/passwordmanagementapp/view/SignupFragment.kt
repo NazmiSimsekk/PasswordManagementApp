@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,10 +17,6 @@ class SignupFragment : Fragment(), SignupClick {
 
     private lateinit var dataBinding: FragmentSignupBinding
     private var viewModel = SignupViewModel()
-
-    private var email = ""
-    private var passWord = ""
-    private var tryPassword = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,30 +38,27 @@ class SignupFragment : Fragment(), SignupClick {
         dataBinding.signUpVar = viewModel
         dataBinding.lifecycleOwner = this@SignupFragment
 
-        viewModel.email.observe(viewLifecycleOwner){
+        dataBinding.signupUserNameEditText.addTextChangedListener {
             it?.let {
-                dataBinding.signupUserNameEditText.setText(it)
+                viewModel.email.value = it.toString()
             }
         }
 
-        viewModel.password.observe(viewLifecycleOwner){
+        dataBinding.signupPassEditText.addTextChangedListener {
             it?.let {
-                dataBinding.signupPassEditText.setText(it)
+                viewModel.password.value = it.toString()
             }
         }
 
-        viewModel.tryPassword.observe(viewLifecycleOwner){
+        dataBinding.signupTryPassEditText.addTextChangedListener {
             it?.let {
-                dataBinding.signupTryPassEditText.setText(it)
+                viewModel.tryPassword.value = it.toString()
             }
         }
     }
 
     override fun signUpClick(v: View) {
-        email = dataBinding.signupUserNameEditText.text.toString()
-        passWord = dataBinding.signupPassEditText.text.toString()
-        tryPassword = dataBinding.signupTryPassEditText.text.toString()
-        viewModel.signUp(email,passWord,tryPassword,requireContext(),v)
+        viewModel.signUp(viewModel.email.value.toString(),viewModel.password.value.toString(),viewModel.tryPassword.value.toString(),requireContext(),v)
     }
 
     override fun onResume() {
