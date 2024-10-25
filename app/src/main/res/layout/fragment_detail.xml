@@ -12,111 +12,267 @@
             name="clickListener"
             type="com.example.passwordmanagementapp.util.DetailClickListener" />
     </data>
-    <LinearLayout
-        android:id="@+id/detailLinearLayout"
+
+    <RelativeLayout
+        android:id="@+id/detailRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.DetailFragment"
-        android:orientation="vertical"
+        android:background="?attr/colorAccent"
         tools:ignore="HardcodedText">
 
-        <EditText
-            android:id="@+id/platformNameDetailText"
-            android:layout_width="250dp"
+        <!-- Üst toolbar -->
+        <Toolbar
+            android:id="@+id/topToolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:hint="Platform Name"
-            android:text="@={detail.detailPlatformName}"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textColorHint="#78909C"
-            android:textSize="24sp" />
+            android:background="#3A3A3A"
+            android:layout_alignParentTop="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DETAIL"
+                android:textColor="@color/white"
+                android:textSize="24sp"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:contentDescription="logout"
+                android:src="@drawable/baseline_logout_24"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"/>
+        </Toolbar>
 
-        <EditText
-            android:id="@+id/detailEmailEditText"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:hint="Email"
-            android:text="@={detail.detailEmail}"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textColorHint="#78909C"
-            android:textSize="24sp"
-            tools:ignore="TextFields" />
-
-        <EditText
-            android:id="@+id/userNameDetailText"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:hint="User Name"
-            android:text="@={detail.detailUserName}"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textColorHint="#78909C"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/passwordDetailText"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:hint="Password"
-            android:text="@={detail.detailPassword}"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:textColorHint="#78909C"
-            android:textSize="24sp" />
-
+        <!-- İçerik alanı -->
         <LinearLayout
-            android:id="@+id/detailButtonLayout"
-            style="?android:attr/buttonBarStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:layout_below="@id/topToolbar"
+            android:layout_above="@id/bottomToolbar"
+            android:padding="16dp">
 
-            <Button
-                android:id="@+id/saveDetailButton"
-                style="?android:attr/buttonBarButtonStyle"
+            <!-- Platform Name -->
+            <EditText
+                android:id="@+id/platformNameDetailText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save"
-                android:onClick="@{clickListener.detailSaveClickListener}"
-                android:textSize="24sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:maxWidth="488dp"
+                android:minWidth="400dp"
+                android:maxEms="10"
+                android:minEms="5"
+                android:hint="Platform Name"
+                android:background="@drawable/rounded_edittext"
+                android:cursorVisible="true"
+                android:textCursorDrawable="?attr/colorPrimary"
+                android:textColor="?attr/colorPrimary"
+                android:text="@={detail.detailPlatformName}"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColorHint="#78909C"
+                android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/deleteDetailButton"
-                style="?android:attr/buttonBarButtonStyle"
+            <!-- Email -->
+            <EditText
+                android:id="@+id/detailEmailEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delete"
-                android:onClick="@{clickListener.detailDeleteClickListener}"
-                android:textSize="24sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:maxWidth="488dp"
+                android:minWidth="400dp"
+                android:background="@drawable/rounded_edittext"
+                android:cursorVisible="true"
+                android:hint="Email"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:text="@={detail.detailEmail}"
+                android:textColor="?attr/colorPrimary"
+                android:textColorHint="#78909C"
+                android:textCursorDrawable="?attr/colorPrimary"
+                android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/copyDetailButton"
-                style="?android:attr/buttonBarButtonStyle"
+            <!-- User Name -->
+            <EditText
+                android:id="@+id/userNameDetailText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Copy"
-                android:onClick="@{clickListener.detailCopyClickListener}"
-                android:textSize="24sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
+                android:maxWidth="488dp"
+                android:minWidth="400dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_edittext"
+                android:cursorVisible="true"
+                android:hint="User Name"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:text="@={detail.detailUserName}"
+                android:textColor="?attr/colorPrimary"
+                android:textColorHint="#78909C"
+                android:textCursorDrawable="?attr/colorPrimary"
+                android:textSize="24sp" />
 
+            <!-- Web Site -->
+            <EditText
+                android:id="@+id/webSite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="488dp"
+                android:minWidth="400dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/rounded_edittext"
+                android:cursorVisible="true"
+                android:hint="Web Site"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:text="@={detail.detailWebSite}"
+                android:textColor="?attr/colorPrimary"
+                android:textColorHint="#78909C"
+                android:textCursorDrawable="?attr/colorPrimary"
+                android:textSize="24sp" />
+
+            <!-- Password -->
+            <EditText
+                android:id="@+id/passwordDetailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="488dp"
+                android:minWidth="400dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:hint="Password"
+                android:text="@={detail.detailPassword}"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:textColor="?attr/colorPrimary"
+                android:cursorVisible="true"
+                android:background="@drawable/rounded_edittext"
+                android:textCursorDrawable="?attr/colorPrimary"
+                android:textColorHint="#78909C"
+                android:textSize="24sp" />
+
+            <!-- Butonlar -->
+            <LinearLayout
+                android:id="@+id/detailButtonLayout"
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="400dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="GENERATE"
+                    android:maxWidth="320dp"
+                    android:minWidth="150dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/tajawal_medium"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/saveDetailButton"
+                    android:contentDescription="Save Password"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/save"
+                    android:onClick="@{clickListener.detailSaveClickListener}"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/deleteDetailButton"
+                    android:background="@drawable/delete"
+                    android:layout_width="55dp"
+                    android:layout_weight="1"
+                    android:contentDescription="Delete"
+                    android:layout_height="55dp"
+                    android:onClick="@{clickListener.detailDeleteClickListener}" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/copyDetailButton"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:background="@drawable/copy"
+                    android:layout_weight="1"
+                    android:contentDescription="Copy"
+                    android:onClick="@{clickListener.detailCopyClickListener}"
+                    />
+
+            </LinearLayout>
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/addblue"
+            android:contentDescription="Add Password"
+            android:layout_above="@+id/bottomToolbar"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"
+            android:padding="20dp"/>
 
-    </LinearLayout>
+        <Toolbar
+            android:id="@+id/bottomToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#3A3A3A"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/listButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="Go to list"
+                android:textColor="@color/white"
+                android:fontFamily="@font/tajawal_medium"
+                android:text="List"
+                android:textSize="20sp" />
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:contentDescription="Go to password generate"
+                android:fontFamily="@font/tajawal_medium"
+                android:text="Generate"
+                android:textSize="20sp" />
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="Go to hashing"
+                android:textColor="@color/white"
+                android:text="Hashing"
+                android:fontFamily="@font/tajawal_medium"
+                android:textSize="20sp" />
+        </Toolbar>
+
+    </RelativeLayout>
 </layout>

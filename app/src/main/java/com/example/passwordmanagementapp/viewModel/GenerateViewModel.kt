@@ -1,8 +1,8 @@
 package com.example.passwordmanagementapp.viewModel
 
+import android.content.ClipData
 import android.content.Context
 import android.widget.Toast
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,54 +16,114 @@ class GenerateViewModel: ViewModel() {
     var upperCase = MutableLiveData<Boolean>()
     var numbers = MutableLiveData<Boolean>()
     var symbols = MutableLiveData<Boolean>()
-    var lenght = MutableLiveData<Int>()
+    var lenght = MutableLiveData<String>()
+
+    private val lowerList = "abcdefghijklmnopqrstuvwxyz"
+    private val upperList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    private val numberList = "0123456789"
+    private val symbolList = "!@#%^&*()_-+=<>?"
+
+    private var isValidPassword: Boolean = false
 
     var char = MutableLiveData<String>()
     private var charpool: String? = null
 
-    fun generatePassword(context: Context, lifecycleOwner: LifecycleOwner) {
+    fun generatePassword(context: Context) {
 
-        val lowerList = "abcdefghijklmnopqrstuvwxyz"
-        val upperList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        val numberList = "0123456789"
-        val symbolList = "!@#%^&*()_-+=<>?"
+        charpool = ""
 
         viewModelScope.launch(Dispatchers.Default) {
-            var i = 0
-            var isValidPassword: Boolean
-            if (lenght.value != null){
 
-                if(lowerCase.value!!) charpool += lowerList else charpool = charpool?.replace(lowerList, "")
-                if(upperCase.value!!) charpool += upperList else charpool = charpool?.replace(upperList, "")
-                if(numbers.value!!) charpool += numberList else charpool = charpool?.replace(numberList, "")
-                if(symbols.value!!) charpool += symbolList else charpool = charpool?.replace(symbolList, "")
+            if (lenght.value != "" && lenght.value != null && lenght.value != "0" && lenght.value!!.toInt() <= 256){
+
+                if(lowerCase.value!!) charpool += lowerList
+                if(upperCase.value!!) charpool += upperList
+                if(numbers.value!!) charpool += numberList
+                if(symbols.value!!) charpool += symbolList
 
 
-                if (lowerCase.value == null && upperCase.value == null && numbers.value == null && symbols.value == null){
-                    Toast.makeText(context, "Select at least one option", Toast.LENGTH_LONG).show()
+                if (lowerCase.value == false && upperCase.value == false && numbers.value == false && symbols.value == false){
+                    withContext(Dispatchers.Main){
+                        Toast.makeText(context, "Select at least one option", Toast.LENGTH_LONG).show()
+                        charpool = "0"
+                    }
                 }
 
                 var password: String
 
                 do {
-                    password = (1..lenght.value!!).map {
+
+                    var controlList = arrayListOf<Boolean>()
+
+                    controlList.clear()
+
+
+                    password = (1..(lenght.value?.toInt()!!)).map {
                         charpool!!.random()
                     }.joinToString("")
 
-                    val controlLower = !lowerCase.value!! || password.any { it in lowerList }
-                    val controlUpper = !upperCase.value!! || password.any { it in upperList }
-                    val controlNumber = !numbers.value!! || password.any { it in numberList }
-                    val controlSymbol = !symbols.value!! || password.any { it in symbolList }
+                    var controlLower = false
+                    var controlUpper = false
+                    var controlNumber = false
+                    var controlSymbol = false
 
-                    isValidPassword = controlLower && controlUpper && controlNumber && controlSymbol
+                    controlList.add(controlLower)
+                    controlList.add(controlUpper)
+                    controlList.add(controlNumber)
+                    controlList.add(controlSymbol)
 
+                    if (lowerCase.value!!){
+                         controlLower = password.any { it in lowerList }
+                    }else{
+                        controlList.remove(controlLower)
+                    }
 
-                }while (!isValidPassword)
+                    if (upperCase.value!!){
+                        controlUpper = password.any { it in upperList }
+                    }else{
+                        controlList.remove(controlUpper)
+                    }
+
+                    if (numbers.value!!){
+                        controlNumber = password.any { it in numberList }
+                    }else{
+                        controlList.remove(controlNumber)
+                    }
+
+                    if (symbols.value!!){
+                        controlSymbol = password.any { it in symbolList }
+                    }else{
+                        controlList.remove(controlSymbol)
+                    }
+
+                    for(i in controlList){
+                        if (i){
+                            isValidPassword = true
+                        }else{
+                            isValidPassword = false
+                            break
+                        }
+                    }
+
+                }while (isValidPassword)
 
                 withContext(Dispatchers.Main){
                     char.value = password
                 }
+            }else{
+                Toast.makeText(context, "En Fazla 256 Karakter", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    fun copyPassword(context: Context) {
+        if (char.value == null){
+            Toast.makeText(context, "Şifre Alınamadı", Toast.LENGTH_LONG).show()
+        }else{
+            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+            val clip = ClipData.newPlainText("password", char.value)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(context, "Şifre Kopyalandı", Toast.LENGTH_LONG).show()
         }
     }
 }

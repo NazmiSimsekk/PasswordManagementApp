@@ -1,6 +1,7 @@
 package com.example.passwordmanagementapp.view
 
 import android.content.DialogInterface
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,6 +57,9 @@ class ListFragment : Fragment(), ListClickListener {
 
         val toolbar: Toolbar = dataBinding.toolbar
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
+
+
 
         val signOutButton = dataBinding.signOutButton
 
@@ -78,9 +82,16 @@ class ListFragment : Fragment(), ListClickListener {
             alertDialog.create()
             alertDialog.show()
         }
-
         viewModel.passList.observe(viewLifecycleOwner){
             listAdapter.updatePassList(it)
+        }
+
+        val currentUi = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        if (currentUi ==  Configuration.UI_MODE_NIGHT_YES){
+            dataBinding.imageButton.setImageResource(R.drawable.add)
+        }else{
+            dataBinding.imageButton.setImageResource(R.drawable.add_black)
         }
     }
 
@@ -91,6 +102,11 @@ class ListFragment : Fragment(), ListClickListener {
 
     override fun goGenerateClickListener(v: View) {
         val action = ListFragmentDirections.actionListFragmentToGenerateFragment()
+        Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun hashingClickListener(v: View) {
+        val action = ListFragmentDirections.actionListFragmentToHashingFragment()
         Navigation.findNavController(v).navigate(action)
     }
 }

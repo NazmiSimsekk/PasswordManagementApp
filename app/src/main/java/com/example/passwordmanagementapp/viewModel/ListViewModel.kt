@@ -31,13 +31,14 @@ class ListViewModel: ViewModel() {
 
                 // Snapshot içindeki dökümanları döngü ile dolaşıyoruz
                 for (document in documents.documents) {
-                    val platformName = document.getString("platformName") ?: ""
-                    val email = document.getString("email") ?: ""
-                    val userName = document.getString("userName") ?: ""
-                    val password = document.getString("password") ?: ""
+                    val platformName = document.getString("PlatformName") ?: ""
+                    val email = document.getString("Email") ?: ""
+                    val userName = document.getString("UserName") ?: ""
+                    val password = document.getString("Password") ?: ""
+                    val webSite = document.getString("Website") ?: ""
                     val id = document.id
 
-                    val passModel = PassModel(platformName, email, userName, password, id)
+                    val passModel = PassModel(platformName, email, userName, password, id, webSite)
                     platformList.add(passModel)
                 }
 
@@ -49,6 +50,7 @@ class ListViewModel: ViewModel() {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+                    println("Alınan Hata: ${e.message}")
                 }
             }
         }

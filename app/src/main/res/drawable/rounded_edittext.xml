@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="?attr/colorSecondary"/> <!-- Arka plan rengi -->
+    <stroke
+        android:width="0.5dp"
+        android:color="?attr/colorPrimary"/> <!-- Kenarlık rengi ve genişliği -->
+    <padding
+        android:left="10dp"
+        android:top="10dp"
+        android:right="10dp"
+        android:bottom="10dp"/>
+</shape>

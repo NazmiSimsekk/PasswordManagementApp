@@ -5,5 +5,6 @@ data class PassModel(
     var email: String,
     var userName: String,
     var password: String,
-    var id: String
+    var id: String,
+    var webSite: String
 )

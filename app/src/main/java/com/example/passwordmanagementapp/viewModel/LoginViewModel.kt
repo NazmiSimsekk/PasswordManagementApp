@@ -40,7 +40,9 @@ class LoginViewModel: ViewModel(){
                         Navigation.findNavController(v).navigate(action)
                     }
                 }catch (e: Exception){
-                    Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+                    withContext(Dispatchers.Main){
+                        Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }

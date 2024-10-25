@@ -48,6 +48,5 @@ class ListAdapter(private val passList: ArrayList<PassModel>) : RecyclerView.Ada
     private fun detailClickListener(v: View, positionId: String?) {
         val action = ListFragmentDirections.actionListFragmentToDetailFragment("detailButtonClick", positionId = positionId)
         Navigation.findNavController(v).navigate(action)
-        println("Deneme basıldı $positionId")
     }
 }

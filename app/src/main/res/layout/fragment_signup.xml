@@ -25,90 +25,85 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:importantForAutofill="no"
-            android:text="Kayıt Olma"
+            android:text="Register"
             android:textSize="24sp"
-            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:fontFamily="@font/tajawal_medium"
             android:layout_gravity="center"
             android:layout_marginBottom="24dp"
             tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/signupUserNameEditText"
-            android:layout_width="380dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:autofillHints="no"
-            android:hint="Kullanıcı Adı"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:cursorVisible="true"
+            android:textCursorDrawable="?attr/colorPrimary"
+            android:hint="Email"
+            android:fontFamily="@font/tajawal_medium"
+            android:background="@drawable/rounded_edittext"
             android:text="@{signUpVar.email}"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            android:textColorHint="@color/black"
+            android:textColor="?attr/colorPrimary"
+            android:textColorHint="?attr/colorPrimary"
             tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/signupPassEditText"
-            android:layout_width="380dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Şifre"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:cursorVisible="true"
+            android:textCursorDrawable="?attr/colorPrimary"
+            android:textColorHint="?attr/colorPrimary"
+            android:hint="Password"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/tajawal_medium"
             android:text="@{signUpVar.password}"
             android:inputType="textPassword"
             android:layout_marginBottom="16dp"
-            android:textColorHint="@color/black"
+            android:textColor="?attr/colorPrimary"
             android:minHeight="48dp"
             tools:ignore="HardcodedText"
             android:importantForAutofill="no"/>
 
         <EditText
             android:id="@+id/signupTryPassEditText"
-            android:layout_width="380dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/tajawal_medium"
+            android:focusableInTouchMode="true"
+            android:cursorVisible="true"
+            android:textCursorDrawable="?attr/colorPrimary"
+            android:textColorHint="?attr/colorPrimary"
+            android:focusable="true"
             android:layout_marginBottom="16dp"
-            android:hint="Şifreyi Tekrar Giriniz"
+            android:hint="RePassword"
+            android:textColor="?attr/colorPrimary"
+            android:background="@drawable/rounded_edittext"
             android:text="@{signUpVar.tryPassword}"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            android:textColorHint="@color/black"
             tools:ignore="HardcodedText" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signupRegisterButton"
-            android:layout_width="300dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Kayıt Ol"
+            android:text="REGISTER"
+            android:fontFamily="@font/tajawal_medium"
+            android:background="@drawable/rounded_button"
             android:textAllCaps="false"
             tools:ignore="HardcodedText,DuplicateSpeakableTextCheck"
             android:onClick="@{signUpClick::signUpClick}"/>
-
-
-        <LinearLayout
-            android:id="@+id/signUpBottomLinearLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <Button
-                android:id="@+id/signUpGenerateButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?android:attr/buttonBarButtonStyle"
-                android:text="Generate"
-                android:textSize="20sp"
-                tools:ignore="HardcodedText"
-                android:textColor="#0277BD"/>
-
-            <Button
-                android:id="@+id/sigUpHashingButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?android:attr/buttonBarButtonStyle"
-                android:text="Hashing"
-                android:textSize="20sp"
-                tools:ignore="HardcodedText"
-                android:textColor="#0277BD"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 </layout>

@@ -7,4 +7,6 @@ interface LoginClickListener {
     fun loginClick(v: View)
 
     fun registerClick(v: View)
+
+    fun forgotPasswordClick(v: View)
 }

@@ -11,123 +11,129 @@
             name="clickListener"
             type="com.example.passwordmanagementapp.util.LoginClickListener" />
     </data>
+
     <LinearLayout
         android:id="@+id/loginLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/colorAccent"
         android:orientation="vertical"
         android:padding="16dp"
-        android:gravity="center"
         tools:context=".view.LoginFragment">
 
         <TextView
             android:id="@+id/textLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kullanıcı Girişi"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="90dp"
             android:layout_marginBottom="24dp"
+            android:fontFamily="@font/tajawal_medium"
+            android:text="Login"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="32sp"
+            android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/loginUsernameEditText"
-            android:layout_width="380dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="16dp"
             android:autofillHints="username"
+            android:background="@drawable/rounded_edittext"
+            android:cursorVisible="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/tajawal_medium"
             android:hint="Email"
-            android:text="@{loginVar.loginEmail}"
             android:inputType="text"
             android:minHeight="48dp"
-            android:textColorHint="@color/black"
+            android:text="@{loginVar.loginEmail}"
+            android:textColorHint="?attr/colorPrimary"
+            android:textCursorDrawable="?attr/colorPrimary"
             tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/loginPasswordEditText"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:hint="Şifre"
-            android:text="@{loginVar.loginPassword}"
-            android:autofillHints="password"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
-            android:textColorHint="#546E7A"
-            tools:ignore="HardcodedText" />
-
-        <Button
-            android:id="@+id/loginButton"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Giriş Yap"
-            android:maxWidth="320dp"
-            android:onClick="@{clickListener::loginClick}"
+            android:layout_gravity="center"
             android:layout_marginBottom="16dp"
-            android:layout_marginTop="25dp"
+            android:autofillHints="password"
+            android:background="@drawable/rounded_edittext"
+            android:cursorVisible="true"
+            android:fontFamily="@font/tajawal_medium"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:text="@{loginVar.loginPassword}"
+            android:textColorHint="?attr/colorPrimary"
+            android:textCursorDrawable="?attr/colorPrimary"
             tools:ignore="HardcodedText" />
 
         <LinearLayout
-            android:id="@+id/loginCenterLinearLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            tools:ignore="HardcodedText">
 
-            <Button
-                android:id="@+id/loginRegisterTextView"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginButton"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                style="?android:attr/buttonBarButtonStyle"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="@font/tajawal_medium"
+                android:maxWidth="320dp"
+                android:onClick="@{clickListener::loginClick}"
+                android:text="LOGIN"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
+                android:text="OR"
+                android:textSize="20sp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginRegisterTextView"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/rounded_button"
                 android:clickable="true"
                 android:focusable="true"
-                android:gravity="center"
+                android:fontFamily="@font/tajawal_medium"
                 android:minHeight="48dp"
                 android:onClick="@{clickListener.registerClick}"
-                android:text="Kayıt Ol"
-                android:textColor="#0277BD"
-                android:textSize="20sp"
-                tools:ignore="HardcodedText"/>
-
-            <Button
-                android:id="@+id/loginForgotPasswordTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?android:attr/buttonBarButtonStyle"
-                android:text="Şifremi Unuttum"
-                android:textColor="#0277BD"
-                android:textSize="20sp"
+                android:text="REGISTER"
                 tools:ignore="HardcodedText" />
-
         </LinearLayout>
 
 
-
-        <LinearLayout
-            android:id="@+id/loginBottomLinearLayout"
+        <Button
+            android:id="@+id/loginForgotPasswordTextView"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_gravity="center"
+            android:paddingEnd="20dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/tajawal_medium"
+            android:gravity="center"
+            android:onClick="@{clickListener.forgotPasswordClick}"
+            android:text="I forgot my password"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
-            <Button
-                android:id="@+id/loginHashingButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hashing"
-                tools:ignore="HardcodedText"
-                style="?android:attr/buttonBarButtonStyle"
-                android:textSize="20sp"/>
-
-            <Button
-                android:id="@+id/loginGenerateButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?android:attr/buttonBarButtonStyle"
-                android:text="Generate"
-                android:textSize="20sp"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        </LinearLayout>
+    </LinearLayout>
 
 </layout>

@@ -77,6 +77,12 @@ class DetailFragment : Fragment(), DetailClickListener {
                 viewModel.detailPassword.value = it.toString()
             }
         }
+
+        dataBinding.webSite.addTextChangedListener {
+            it?.let {
+                viewModel.detailWebSite.value = it.toString()
+            }
+        }
     }
     private fun detailGetData() {
         viewModel.getData(positionId.toString())
@@ -88,13 +94,15 @@ class DetailFragment : Fragment(), DetailClickListener {
                     dataBinding.detailEmailEditText.setText(i.email)
                     dataBinding.userNameDetailText.setText(i.userName)
                     dataBinding.passwordDetailText.setText(i.password)
+                    dataBinding.webSite.setText(i.webSite)
                 }
             }
         }
     }
     override fun detailSaveClickListener(v: View) {
         if(control == "addButtonClick"){
-            viewModel.saveData(viewModel.detailPlatformName.value.toString(),viewModel.detailEmail.value.toString(),viewModel.detailUserName.value.toString(),viewModel.detailPassword.value.toString(),requireContext())
+            viewModel.saveData(viewModel.detailPlatformName.value.toString(),viewModel.detailEmail.value.toString(),viewModel.detailUserName.value.toString(),viewModel.detailPassword.value.toString(),
+                viewModel.detailWebSite.value.toString(),requireContext())
         }else{
             viewModel.updateData(positionId.toString(),requireContext())
         }

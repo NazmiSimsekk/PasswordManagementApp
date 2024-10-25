@@ -1,9 +1,11 @@
 package com.example.passwordmanagementapp.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -48,6 +50,17 @@ class LoginFragment : Fragment(), LoginClickListener {
                 viewModel.loginPassword.value = it.toString()
             }
         }
+
+        dataBinding.loginLinearLayout.setOnClickListener {
+            hideKeyboard(it)
+            dataBinding.loginUsernameEditText.clearFocus()
+            dataBinding.loginPasswordEditText.clearFocus()
+        }
+    }
+
+    private fun hideKeyboard(v: View){
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(v.windowToken, 0)
     }
 
     override fun loginClick(v: View) {
@@ -59,5 +72,8 @@ class LoginFragment : Fragment(), LoginClickListener {
         Navigation.findNavController(v).navigate(action)
     }
 
-
+    override fun forgotPasswordClick(v: View) {
+        val action = LoginFragmentDirections.actionLoginFragmentToForgotPassword()
+        Navigation.findNavController(v).navigate(action)
+    }
 }

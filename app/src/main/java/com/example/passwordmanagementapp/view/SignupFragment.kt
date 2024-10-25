@@ -1,9 +1,11 @@
 package com.example.passwordmanagementapp.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -55,24 +57,21 @@ class SignupFragment : Fragment(), SignupClick {
                 viewModel.tryPassword.value = it.toString()
             }
         }
+
+        dataBinding.signUpLinearLayout.setOnClickListener {
+            hideKeyboard(it)
+            dataBinding.signupUserNameEditText.clearFocus()
+            dataBinding.signupPassEditText.clearFocus()
+            dataBinding.signupTryPassEditText.clearFocus()
+        }
+    }
+
+    private fun hideKeyboard(v: View){
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(v.windowToken, 0)
     }
 
     override fun signUpClick(v: View) {
         viewModel.signUp(viewModel.email.value.toString(),viewModel.password.value.toString(),viewModel.tryPassword.value.toString(),requireContext(),v)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        println("Fragment Resume")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        println("Fragment View Dead")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        println("Fragment Dead")
     }
 }

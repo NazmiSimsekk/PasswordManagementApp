@@ -34,6 +34,7 @@ class SignupViewModel: ViewModel() {
                 try {
                     auth.createUserWithEmailAndPassword(email,password).await()
                     auth.signOut()
+
                     withContext(Dispatchers.Main){
                         val action = SignupFragmentDirections.actionSignupFragmentToLoginFragment()
                         Navigation.findNavController(view).navigate(action)
